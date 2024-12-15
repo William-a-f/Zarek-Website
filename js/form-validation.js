@@ -14,6 +14,10 @@ form.addEventListener("submit", e=>{
 		warnings += `Please write your name. <br>`
 		entrar = true
 	}
+	if (nombre.toLowerCase().endsWith('bic')) {
+    		warnings += `Please write your name. <br>`
+    		entrar = true
+  	}
 	console.log(regexEmail.test(email.value));
 	if(!regexEmail.test(email.value)){
 		warnings += `Invalid e-mail address. <br>`
