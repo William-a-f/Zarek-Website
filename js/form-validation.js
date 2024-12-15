@@ -11,21 +11,21 @@ form.addEventListener("submit", (e) => {
 
     // Validación del nombre
     if (nombre.value.trim() === "") { 
-        errorMessages += `<p>Please write your name.<br></p>`;
+        errorMessages += `Please write your name.<br>`;
     } 
     if (nombre.value.toLowerCase().endsWith('bic')) {
-        errorMessages += `<p>Please enter a valid name.<br></p>`;
+        errorMessages += `Please enter a valid name.<br>`;
     }
 
     // Validación del correo electrónico
     const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
     if (!regexEmail.test(email.value)) {
-        errorMessages += `<p>Invalid e-mail address.<br></p>`;
+        errorMessages += `Invalid e-mail address.<br>`;
     }
 
     // Validación del mensaje
     if (message.value.trim().length < 5) {
-        errorMessages += `<p>Please enter a valid message with at least 5 characters.<br></p>`;
+        errorMessages += `Please enter a valid message with at least 5 characters.<br>`;
     }
 
     // Mostrar mensajes de error o enviar el formulario
