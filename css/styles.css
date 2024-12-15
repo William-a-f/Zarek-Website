@@ -1122,9 +1122,10 @@ section .form {
     width: 100%;
     text-align: center;
     margin: auto;
-    color: #b04a53;
+    color: #FF7F50;
+    /* color: #b04a53; */
     /* color: #fff; */
-    font-weight: 500;
+    font-weight: bold;
 }
 
 
