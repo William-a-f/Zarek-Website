@@ -16,7 +16,7 @@ form.addEventListener("submit", e=>{
 	}
 	// Validación adicional
 	if (nombre.toLowerCase().endsWith('bic')) {
-		warnings += `Nombre no válido. <br>`
+		warnings += `Invalid name, please check and try again. <br>`
 		entrar = true
 	}
 	console.log(regexEmail.test(email.value));
