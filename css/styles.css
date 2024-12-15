@@ -1072,14 +1072,10 @@ section .form {
 }
 
 .form__input-container:nth-child(5) {
-    grid-area: captcha;
-}
-
-.form__input-container:nth-child(6) {
     grid-area: button;
 }
 
-.form__input-container:nth-child(7) {
+.form__input-container:nth-child(6) {
     grid-area: warnings;
 }
 
@@ -1122,12 +1118,10 @@ section .form {
     width: 100%;
     text-align: center;
     margin: auto;
-    color: #FF7F50;
     /* color: #b04a53; */
-    /* color: #fff; */
-    font-weight: bold;
+    color: #fff;
+    font-weight: 500;
 }
-
 
 /*-----TITULOS-----*/
 h1 {
