@@ -1045,6 +1045,7 @@ section .form {
         "name    email"
         "date    date"
         "message message"
+        "captcha captcha"
         "button  button"
         "warnings  warnings";
     gap: 14px;
@@ -1071,10 +1072,14 @@ section .form {
 }
 
 .form__input-container:nth-child(5) {
-    grid-area: button;
+    grid-area: captcha;
 }
 
 .form__input-container:nth-child(6) {
+    grid-area: button;
+}
+
+.form__input-container:nth-child(7) {
     grid-area: warnings;
 }
 
