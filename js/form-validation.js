@@ -32,8 +32,6 @@ form.addEventListener("submit", (e) => {
     warnings.innerHTML = errorMessages;
 
     if (errorMessages === "") {
-        // Aquí puedes enviar el formulario (por ejemplo, con fetch)
-        // ...
         warnings.innerHTML = "Sent";
     }
 });
