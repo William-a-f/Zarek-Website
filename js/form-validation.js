@@ -3,6 +3,7 @@ const email = document.getElementById("email");
 const message = document.getElementById("message");
 const form = document.getElementById("form");
 const warnings = document.getElementById("warnings");
+const token = grecaptcha.getResponse();
 
 form.addEventListener("submit", (e) => {
     e.preventDefault(); 
@@ -26,6 +27,10 @@ form.addEventListener("submit", (e) => {
     // Validación del mensaje
     if (message.value.trim().length < 5) {
         errorMessages += `Please enter a valid message with at least 5 characters.<br>`;
+    }
+
+    if (token === '') {
+        errorMessages += `Please, complete CAPTCHA verification.<br>`;
     }
 
     // Mostrar mensajes de error o enviar el formulario
