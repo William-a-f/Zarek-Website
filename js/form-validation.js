@@ -35,7 +35,7 @@ const form = document.getElementById('form');
                 submitButton.disabled = true; // Deshabilitar el botón para evitar envíos múltiples
                 warnings.innerHTML = 'Sending...'; // Mostrar mensaje de envío
 
-                fetch(form.action, { "https://formsubmit.co/25bee5a5316d971ab0478a7b1ba59e26",
+                fetch(form.action, { //Usar la url del action del form para mejor funcionamiento
                     method: 'POST',
                     body: new FormData(form)
                 })
