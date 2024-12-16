@@ -29,11 +29,6 @@ function validateFields() {
         errorMessages.push('The message must be at least 10 characters long.');
     }
 
-	// Validación de reCAPTCHA v2
-    if (grecaptcha.getResponse() === "") {
-        errorMessages.push("Please complete the reCAPTCHA.");
-    }
-
     warnings.innerHTML = errorMessages.join('<br>');
     submitButton.disabled = errorMessages.length > 0;
 
@@ -46,30 +41,35 @@ messageInput.addEventListener('input', validateFields);
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-
-    if (validateFields()) {
-        submitButton.disabled = true;
+        if (validateFields()) { // Validar campos del formulario
         warnings.innerHTML = 'Sending...';
+        submitButton.disabled = true;
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6LepR50qAAAAACG9eo0Tgc9JBcDnktqzKshSVJYC', {action: 'submit'}).then(function(token) {
+                    let formData = new FormData(form);
+                    formData.append('g-recaptcha-response', token);
 
-        fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form)
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(data => {
-            warnings.innerHTML = 'Sent!';
-            form.reset();
-            submitButton.disabled = false;
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            warnings.innerHTML = 'There was an error sending your message. Please try again later.';
-            submitButton.disabled = false;
-        });
-    }
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        warnings.innerHTML = 'Sent!';
+                        form.reset();
+                        submitButton.disabled = false;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        warnings.innerHTML = 'There was an error sending your message. Please try again later.';
+                        submitButton.disabled = false;
+                    });
+                });
+            });
+        }
 });
