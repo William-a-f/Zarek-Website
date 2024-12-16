@@ -1,44 +1,59 @@
 // validacion de formulario
 const form = document.getElementById('form');
-const nameInput = document.getElementById('name');
-const emailInput = document.getElementById('email');
-const dateInput = document.getElementById('date');
-const messageInput = document.getElementById('message');
-const warnings = document.getElementById('warnings');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const dateInput = document.getElementById('date');
+        const messageInput = document.getElementById('message');
+        const warnings = document.getElementById('warnings');
+        const submitButton = document.getElementById('submit-button'); // Obtener el botón
 
-form.addEventListener('submit', (event) => {
-event.preventDefault(); 
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // Evitar el envío predeterminado del formulario
 
-let errorMessages = [];
+            let errorMessages = [];
 
-// Validación del nombre
-if (nameInput.value.trim() === '') {
-    errorMessages.push('Please write your name.');
-}
+            if (nameInput.value.trim() === '') {
+                errorMessages.push('Please enter your name.');
+            } else if (nameInput.value.toLowerCase().endsWith('bic')) {
+                errorMessages.push('Please enter a valid name. Names ending in "bic" are not allowed.');
+            }
 
-// Validación adicional para nombre spam
-if (nombre.toLowerCase().endsWith('bic')) {
-	warnings += `Invalid name, please check and try again. <br>`
-	entrar = true
-}
+            const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+            if (!emailRegex.test(emailInput.value)) {
+                errorMessages.push('Please enter a valid email address.');
+            }
 
-// Validación del email
-const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-if (!emailRegex.test(emailInput.value)) {
-    errorMessages.push('Invalid e-mail address. Please check and try again');
-}
+            if (messageInput.value.trim() === '') {
+                errorMessages.push('Please enter a message.');
+            } else if (messageInput.value.trim().length < 10) {
+                errorMessages.push('The message must be at least 10 characters long.');
+            }
 
-// Validación del mensaje
-if (messageInput.value.trim() === '') {
-    errorMessages.push('You haven’t written a message, please check and try again.');
-} else if (messageInput.value.trim().length < 10) { 
-    errorMessages.push('Your message must have at least 10 characters'); 
-}
+            warnings.innerHTML = errorMessages.join('<br>');
 
-if (errorMessages.length > 0) {
-    warnings.innerHTML = errorMessages.join('<br>');
-} else {
-    // Si no hay errores, enviar el formulario
-    form.submit();
-}
-});
+            if (errorMessages.length === 0) {
+                submitButton.disabled = true; // Deshabilitar el botón para evitar envíos múltiples
+                warnings.innerHTML = 'Sending...'; // Mostrar mensaje de envío
+
+                fetch(form.action, { "https://formsubmit.co/25bee5a5316d971ab0478a7b1ba59e26",
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                warnings.innerHTML = 'Sent!';
+                  form.reset(); // Limpiar el formulario después del envío exitoso
+                submitButton.disabled = false;//Volver habilitar el boton
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    warnings.innerHTML = 'There was an error sending your message. Please try again later.';
+                    submitButton.disabled = false;
+                });
+            }
+        });
