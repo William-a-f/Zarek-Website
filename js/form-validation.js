@@ -9,15 +9,15 @@ const submitButton = document.getElementById('submit-button');
 function validateFields() {
     let errorMessages = [];
 
-    // Validación del nombre
+//Validación del nombre
     if (nameInput.value.trim() === '') {
         errorMessages.push('Please enter your name.');
-    } else if (nameInput.value.trim().length === 2) { // Nueva validación: al menos dos caracteres
+    } else if (nameInput.value.trim().length === 2) { // Validar nombre completo
         errorMessages.push('Please enter a valid name (at least two characters).');
     } else if (nameInput.value.toLowerCase().endsWith('bic')) {
         errorMessages.push('Please enter a complete and valid name');
     }
-
+//Validacion de email
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
     if (!emailRegex.test(emailInput.value)) {
         errorMessages.push('Please enter a valid email address.');
@@ -34,7 +34,7 @@ function validateFields() {
 
     return errorMessages.length === 0;
 }
-
+//Validacion por campos
 nameInput.addEventListener('input', validateFields);
 emailInput.addEventListener('input', validateFields);
 messageInput.addEventListener('input', validateFields);
