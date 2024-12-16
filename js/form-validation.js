@@ -15,7 +15,7 @@ const form = document.getElementById('form');
             if (nameInput.value.trim() === '') {
                 errorMessages.push('Please enter your name.');
             } else if (nameInput.value.toLowerCase().endsWith('bic')) {
-                errorMessages.push('Please enter a valid name. Names ending in "bic" are not allowed.');
+                errorMessages.push('Please enter a complete and valid name.');
             }
 
             const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
