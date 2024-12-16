@@ -29,6 +29,11 @@ function validateFields() {
         errorMessages.push('The message must be at least 10 characters long.');
     }
 
+	// Validación de reCAPTCHA v2
+    if (grecaptcha.getResponse() === "") {
+        errorMessages.push("Please complete the reCAPTCHA.");
+    }
+
     warnings.innerHTML = errorMessages.join('<br>');
     submitButton.disabled = errorMessages.length > 0;
 
