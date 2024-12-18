@@ -1071,11 +1071,11 @@ section .form {
     grid-area: message;
 }
 
-.form__input-container:nth-child(5) {
+.form__input-container:nth-child(6) {
     grid-area: button;
 }
 
-.form__input-container:nth-child(6) {
+.form__input-container:nth-child(7) {
     grid-area: warnings;
 }
 
