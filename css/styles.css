@@ -1110,6 +1110,11 @@ section .form {
     background-color: #1a4f82;
 }
 
+.honeypot-container {
+    display: none;
+    visibility: hidden;
+}
+
 
 /*--------MAIN END------*/
 

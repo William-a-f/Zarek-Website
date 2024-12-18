@@ -3,6 +3,7 @@ const form = document.getElementById('form');
 const nameInput = document.getElementById('name');
 const emailInput = document.getElementById('email');
 const messageInput = document.getElementById('message');
+const honeypotInput = document.getElementById('honeypot');
 const warnings = document.getElementById('warnings');
 const submitButton = document.getElementById('submit-button');
 
@@ -27,6 +28,11 @@ function validateFields() {
         errorMessages.push('Please enter a message.');
     } else if (messageInput.value.trim().length < 10) {
         errorMessages.push('The message must be at least 10 characters long.');
+    }
+
+// Validación del honeypot
+    if (honeypotInput.value.trim() !== '') { 
+    errorMessages.push('There was an error. Please try again later.'); 
     }
 
     warnings.innerHTML = errorMessages.join('<br>');
