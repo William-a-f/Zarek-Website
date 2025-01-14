@@ -1415,18 +1415,6 @@ footer {
         margin: 0 18px 0 18px;
     }
 
-    /* .release-text>.button {
-        width: 100%;
-        margin-bottom: 50px;
-        margin-top: 20px;
-        justify-content: center;
-    }
-
-    .release-text>.button a {
-        text-align: start;
-        padding: 10px 10%;
-    } */
-
     .listen-here {
         justify-content: center;
         flex-direction: column;
@@ -1550,6 +1538,11 @@ footer {
         margin-top: 50px;
     }
 
+    .producto-bc img {
+        width: 65%;
+        margin-top: 50px;
+    }
+
     .info {
         display: flex;
         flex-direction: column;
@@ -1583,6 +1576,15 @@ footer {
         justify-content: space-evenly;
     }
 
+    .producto-bc {
+        height: auto;
+        scale: 1;
+        width: 90%;
+        animation-range: cover 1% cover 6%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
     .button {
         margin-top: 30px;
         margin-bottom: 30px;
@@ -1602,7 +1604,17 @@ footer {
         display: none;
     }
 
+    .producto-bc img {
+        display: none;
+    }
+
     .producto {
+        height: 300px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .producto-bc {
         height: 300px;
         width: 100%;
         justify-content: center;
