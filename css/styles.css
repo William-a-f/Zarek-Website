@@ -788,11 +788,41 @@ label {
     margin: 10px;
     margin-bottom: 40px;
     width: 32%;
-    min-height: 480px;
+    min-height: 460px;
     max-width: 100vw;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transform: scale(.9);
     transition: transform .3s ease-in-out;
+}
+
+.producto-bc {
+    view-timeline: --bio block;
+    animation: aparecer both;
+    animation-timeline: --bio;
+    animation-range: cover 15% cover 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd1;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    width: 32%;
+    min-height: 460px;
+    max-width: 100vw;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: scale(.9);
+    transition: transform .3s ease-in-out;
+}
+
+.producto-bc:first-child {
+    background-image: linear-gradient(#000b, #000b), url(../assets/img/Catalogo/Te-Pienso-Cover-Art.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.producto-bc:hover {
+    transform: scale(1);
 }
 
 .producto:hover {
@@ -815,6 +845,12 @@ label {
     background-image: linear-gradient(#000b, #000b), url(../assets/img/Catalogo/3SS3NTI4L.jpg);
     background-size: cover;
     background-position: center;
+}
+
+.producto-bc img {
+    width: 60%;
+    border-radius: 8px;
+    margin-top: 20px;
 }
 
 .producto img {
